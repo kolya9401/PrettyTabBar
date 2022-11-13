@@ -23,7 +23,6 @@ struct ExampleView: View {
                   .prettyTabBarItem(.favorites, selection: $selectionTabBarItem)
           }
       }
-
 }
 
 struct TestView: View {
