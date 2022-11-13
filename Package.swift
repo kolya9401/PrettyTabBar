@@ -20,7 +20,8 @@ let package = Package(
         .target(
             name: "PrettyTabBar",
             dependencies: [
-            ]
+            ],
+            path: "Sources"
         ),
     ]
 )
