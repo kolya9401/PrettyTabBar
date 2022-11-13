@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "prettytabbar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kolya9401/PrettyTabBar",
+      "state" : {
+        "branch" : "main",
+        "revision" : "afa9ad04e8ae09155e55930a2ab07a2ce674ce69"
+      }
+    }
+  ],
+  "version" : 2
+}
