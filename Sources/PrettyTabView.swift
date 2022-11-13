@@ -28,7 +28,11 @@ public struct PrettyTabView<Content: View>: View {
             content
         }
         .safeAreaInset(edge: .bottom, content: {
-            prettyTabBarView()
+            HStack {
+                Spacer(minLength: 53)
+                prettyTabBarView()
+                Spacer(minLength: 53)
+            }
         })
         .onPreferenceChange(PrettyTabBarItemPreferenceKey.self) { value in
             self.tabBarItems = value
@@ -46,6 +50,5 @@ private extension PrettyTabView {
                 PrettyTabBarView(tabBarItems: tabBarItems, selection: $selection)
             }
         }
-        .padding()
     }
 }

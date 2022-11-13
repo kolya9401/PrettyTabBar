@@ -19,20 +19,21 @@ struct PrettyTabItemView: View {
     var body: some View {
         HStack {
             if isSelected {
+                Spacer()
                 icon()
                 Text(tabBarItem.title)
                     .lineLimit(1)
+                Spacer()
             } else {
                 icon()
             }
         }
-        .foregroundColor(isSelected ? Color.black : Color.black.opacity(0.7))
-        .padding(13)
-        .frame(
-            minWidth: 35,
-            minHeight: 35
+        .foregroundColor(
+            isSelected ? Color.black : Color.black.opacity(0.7)
         )
+        .padding([.top, .bottom], 13)
         .cornerRadius(10)
+        .frame(minWidth: 44, minHeight: 44)
     }
 }
 

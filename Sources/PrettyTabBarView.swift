@@ -19,24 +19,27 @@ struct PrettyTabBarView: View {
     var body: some View {
         HStack {
             ForEach(tabBarItems, id: \.self) { item in
-                PrettyTabItemView(tabBarItem: item, isSelected: selection == item)
-                    .background(
-                        ZStack {
-                            if selection == item {
-                                RoundedRectangle(cornerRadius: 13)
-                                    .fill(Color.gray.opacity(0.2))
-                                    .matchedGeometryEffect(
-                                        id: "selection_background",
-                                        in: namespace
-                                    )
-                            }
-                        }
-                    )
-                    .onTapGesture {
-                        withAnimation(.linear) {
-                            self.selection = item
+                PrettyTabItemView(
+                    tabBarItem: item,
+                    isSelected: selection == item
+                )
+                .background(
+                    ZStack {
+                        if selection == item {
+                            RoundedRectangle(cornerRadius: 13)
+                                .fill(Color.gray.opacity(0.2))
+                                .matchedGeometryEffect(
+                                    id: "selection_background",
+                                    in: namespace
+                                )
                         }
                     }
+                )
+                .onTapGesture {
+                    withAnimation(.linear) {
+                        self.selection = item
+                    }
+                }
             }
         }
         .padding(8)
