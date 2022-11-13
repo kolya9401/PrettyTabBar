@@ -8,4 +8,12 @@
 public struct TabBarItem: Hashable {
     let title: String
     let iconSystemName: String
+    
+    public init(
+        title: String,
+        iconSystemName: String
+    ) {
+        self.title = title
+        self.iconSystemName = iconSystemName
+    }
 }
