@@ -46,9 +46,3 @@ private extension PrettyTabItemView {
             .frame(width: 22, height: 22)
     }
 }
-
-struct PrettyTabViewItem_Previews: PreviewProvider {
-    static var previews: some View {
-        PrettyTabItemView(tabBarItem: .home, isSelected: true)
-    }
-}

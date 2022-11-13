@@ -45,15 +45,3 @@ struct PrettyTabBarView: View {
         .shadow(color: .gray.opacity(0.3), radius: 13, x: 0, y: 5)
     }
 }
-
-struct PrettyTabBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            Spacer()
-            PrettyTabBarView(
-                tabBarItems: [.home, .favorites, .person],
-                selection: .constant(.favorites)
-            )
-        }
-    }
-}

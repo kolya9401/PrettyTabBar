@@ -49,15 +49,3 @@ private extension PrettyTabView {
         .padding()
     }
 }
-
-struct PrettyTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        PrettyTabView(selection: .constant(.home)) {
-            Color.red
-                .prettyTabBarItem(.favorites, selection: .constant(.favorites))
-            
-            Color.green
-                .prettyTabBarItem(.person, selection: .constant(.person))
-        }
-    }
-}
