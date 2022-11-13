@@ -28,11 +28,7 @@ public struct PrettyTabView<Content: View>: View {
             content
         }
         .safeAreaInset(edge: .bottom, content: {
-            HStack {
-                Spacer(minLength: 53)
-                prettyTabBarView()
-                Spacer(minLength: 53)
-            }
+            prettyTabBarView()
         })
         .onPreferenceChange(PrettyTabBarItemPreferenceKey.self) { value in
             self.tabBarItems = value
@@ -44,10 +40,20 @@ private extension PrettyTabView {
     func prettyTabBarView() -> some View {
         HStack {
             if UIDevice.current.userInterfaceIdiom == .pad {
-                Spacer()
-                PrettyTabBarView(tabBarItems: tabBarItems, selection: $selection)
+                // TODO: Fix Ipad 
+                Spacer(minLength: 53)
+                PrettyTabBarView(
+                    tabBarItems: tabBarItems,
+                    selection: $selection
+                )
+                Spacer(minLength: 53)
             } else {
-                PrettyTabBarView(tabBarItems: tabBarItems, selection: $selection)
+                Spacer(minLength: 53)
+                PrettyTabBarView(
+                    tabBarItems: tabBarItems,
+                    selection: $selection
+                )
+                Spacer(minLength: 53)
             }
         }
     }

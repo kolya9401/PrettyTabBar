@@ -8,10 +8,22 @@
 import SwiftUI
 
 struct PrettyTabBarView: View {
-    let tabBarItems: [TabBarItem]
+    private let tabBarItems: [TabBarItem]
 
     @Binding
-    var selection: TabBarItem
+    private var selection: TabBarItem
+    
+    @State
+    private var animateSelection: TabBarItem
+    
+    init(
+        tabBarItems: [TabBarItem],
+        selection: Binding<TabBarItem>
+    ) {
+        self.tabBarItems = tabBarItems
+        self._selection = selection
+        self.animateSelection = selection.wrappedValue
+    }
     
     @Namespace
     private var namespace
@@ -21,7 +33,7 @@ struct PrettyTabBarView: View {
             ForEach(tabBarItems, id: \.self) { item in
                 PrettyTabItemView(
                     tabBarItem: item,
-                    isSelected: selection == item
+                    isSelected: animateSelection == item
                 )
                 .background(
                     ZStack {
@@ -36,7 +48,7 @@ struct PrettyTabBarView: View {
                     }
                 )
                 .onTapGesture {
-                    withAnimation(.linear) {
+                    withAnimation(.easeInOut) {
                         self.selection = item
                     }
                 }
@@ -46,5 +58,10 @@ struct PrettyTabBarView: View {
         .background(ignoresSafeAreaEdges: .bottom)
         .cornerRadius(13)
         .shadow(color: .gray.opacity(0.3), radius: 13, x: 0, y: 5)
+        .onChange(of: selection) { newValue in
+            withAnimation(.easeInOut) {
+                animateSelection = newValue
+            }
+        }
     }
 }
